@@ -1,3 +1,9 @@
+/*
+Edison Aguiar de Souza Neto
+Natália Gama de Mattos
+Pietro Gonçalves da Silva
+*/
+
 #include <stdio.h>
 #include <string.h>
 
@@ -5,19 +11,19 @@ double Eng[26] = {
     8.167, 1.492, 2.782, 4.253, 12.702, 2.228, 2.015, 6.094, 6.966, 
     0.153, 0.772, 4.025, 2.406, 6.749, 7.507, 1.929, 0.095, 5.987, 
     6.327, 9.056, 2.758, 0.978, 2.360, 0.150, 1.974, 0.074
-  };
+  }; //Porcentagens de cada letra em inglês
 
 double Ger[26] = {
   6.51, 1.89, 3.06, 5.08, 17.40, 1.66, 3.01, 4.76, 
   7.55, 0.27, 1.21, 3.44, 2.53, 9.78, 2.51, 0.79, 0.02, 
   7, 7.27, 6.15, 4.35, 0.67, 1.89, 0.03, 0.04, 1.13
-};
+}; //Porcentagens de cada letra em alemão
 
 double PT[26] = {
   14.63, 1.04, 3.88, 4.99, 12.57, 1.02, 1.30, 1.28, 
   6.18, 0.40, 0.02, 2.78, 4.74, 5.05, 10.73, 2.52, 1.2, 
   6.53, 7.81, 4.32, 4.63, 1.67, 0.01, 0.21, 0.01, 0.47
-  };
+  }; //Porcentagens de cada letra em português
 
 void calcular(double str[],double limite)
 {
@@ -25,14 +31,14 @@ void calcular(double str[],double limite)
   double ptt = 0, engt = 0, gert = 0;
 
   for(int i=0;i <= 26; i=i+1){
-      str[i] = (str[i] * 100)/limite;
+      str[i] = (str[i] * 100)/limite; //Porcentagem de aparição de cada letra na frase de entrada.
   };
 
   for(int i=0;i <= 26; i=i+1){
     printf("%f\n", str[i]);
   };
 
-  for(int i=0;i <= 26; i=i+1){
+  for(int i=0;i <= 26; i=i+1){ //Calcula a proximidade de cada porcentagem, em módulo, para cada letra.
     if(str[i] < PT[i])
       ptp = PT[i] - str[i];
     else
@@ -46,7 +52,7 @@ void calcular(double str[],double limite)
     else
       gerp = str[i] - Ger[i];
     
-    if(ptp < engp && ptp < gert){
+    if(ptp < engp && ptp < gert){ //Marca a "pontuação" de cada linguagem.
       ptt +=1;
     } else if (engp > gerp ) {
       engt +=1;
@@ -54,7 +60,7 @@ void calcular(double str[],double limite)
       gert +=1;
     }
   }
-  printf("%f %f %f", ptt, engt, gert);
+  printf("%f %f %f", ptt, engt, gert); //Compara as "pontuações" e então faz a decisão final.
 
   if(ptt>engt && ptt>gert){
     printf("\n\nPORTUGUÊS\n\n");
@@ -65,8 +71,12 @@ void calcular(double str[],double limite)
   }
 };
 
-double * percorrer(char str[], double limite)
+double * percorrer(char str[], double limite) 
 {
+  /*
+  Lê a array de entrada, letra por letra e retorna um array novo 
+  com a quantidade de vezes que cada letra aparece na frase.
+  */
   static double aparicao[26];
 
   for(int i=0;i <= 26; i=i+1){
