@@ -6,6 +6,8 @@ int contE;
 int contT;
 int contN;
 
+//TESTANDO PULL
+
 int contador_a(char *s){        //função que conta as ocorrencias da letra a
   for(int i=0;i != '\0';i++){
     if(s[i]=='a')
